@@ -1,0 +1,184 @@
+#Compare the Triplets
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'compareTriplets' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY a
+#  2. INTEGER_ARRAY b
+#
+
+
+def compareTriplets(a, b):
+    lis3=[]
+    alice=0
+    bob=0
+    for x, y in zip(a, b):
+        if x>y:
+                alice+=1
+        elif x<y:
+                bob+=1
+    lis3.append(alice)
+    lis3.append(bob)
+    return(lis3)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = list(map(int, input().rstrip().split()))
+
+    b = list(map(int, input().rstrip().split()))
+
+    result = compareTriplets(a, b)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+
+
+
+
+
+#SOLVE ME FIRST
+def solveMeFirst(a,b):
+    # Hint: Type return a+b below
+    return a+b;
+
+num1 = int(input())
+num2 = int(input())
+res = solveMeFirst(num1,num2)
+print(res)
+
+
+
+
+
+#DIAGONAL DIFFERENCE 
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'diagonalDifference' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY arr as parameter.
+#
+
+
+def diagonalDifference(arr):
+    # Write your code here
+    return abs(sum(arr[i][i] for i in range(len(arr))) - sum(arr[i][len(arr)-i-1] for i in range(len(arr))))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+#PLUS MINUS
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'plusMinus' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+
+    # Write your code here
+def plusMinus(arr):
+    pos = 0
+    neg = 0
+    zer = 0
+    for item in arr:
+        if item >0:
+            pos+=1
+        elif item < 0:
+            neg+=1
+        else:
+            zer+=1
+    length = len(arr)
+    
+    print("{:.6f}".format(pos/length))
+    print("{:.6f}".format(neg/length))
+    print("{:.6f}".format(zer/length))
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
+
+
+
+
+
+#MINI-MAX SUM
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'miniMaxSum' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+
+    # Write your code here
+def miniMaxSum(arr):
+    arr = sorted(arr)
+    a , b = 0,0
+    for i in range(0,len(arr)):
+        if i == 4:
+            break
+        a += arr[i]
+    for i in range(len(arr)-1,0,-1):
+        if i == 0:
+            break
+        b += arr[i]
+    print(a, b)
+
+if __name__ == '__main__':
+
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
