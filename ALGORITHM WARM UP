@@ -1,4 +1,4 @@
-#Compare the Triplets
+1.#Compare the Triplets
 #!/bin/python3
 
 import math
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
 
 
-#SOLVE ME FIRST
+2.#SOLVE ME FIRST
 def solveMeFirst(a,b):
     # Hint: Type return a+b below
     return a+b;
@@ -65,7 +65,7 @@ print(res)
 
 
 
-#DIAGONAL DIFFERENCE 
+3.#DIAGONAL DIFFERENCE 
 #!/bin/python3
 
 import math
@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
 
 
-#PLUS MINUS
+4.#PLUS MINUS
 #!/bin/python3
 
 import math
@@ -147,7 +147,7 @@ if __name__ == '__main__':
 
 
 
-#MINI-MAX SUM
+5.#MINI-MAX SUM
 #!/bin/python3
 
 import math
@@ -188,7 +188,7 @@ if __name__ == '__main__':
 
 
 
-#SIMPLE ARRAY SUM
+6.#SIMPLE ARRAY SUM
 #!/bin/python3
 
 import math
@@ -222,5 +222,152 @@ if __name__ == '__main__':
     result = simpleArraySum(ar)
 
     fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+7.#A VERY BIG SUM
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'aVeryBigSum' function below.
+#
+# The function is expected to return a LONG_INTEGER.
+# The function accepts LONG_INTEGER_ARRAY ar as parameter.
+#
+
+
+def aVeryBigSum(ar):
+  sum = 0
+  for x in ar:
+        sum += x
+  return sum
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input().strip())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = aVeryBigSum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+8.#STAIRCASE
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'staircase' function below.
+#
+# The function accepts INTEGER n as parameter.
+#
+
+
+def staircase(n):
+    # Write your code here
+    space = n-1
+    for i in range(1, n+1):
+        print(space* ' ' + '#'*i)
+        space-=1
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    staircase(n)
+
+
+
+
+
+9.#BIRTHDAY CAKE CANDLES
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'birthdayCakeCandles' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY candles as parameter.
+#
+
+import operator as op
+
+
+def birthdayCakeCandles(candles):
+    return op.countOf(candles, max(candles))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(input().strip())
+
+    candles = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+
+10.#TIME CONVERSION
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'timeConversion' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+
+def timeConversion(s):
+    # Write your code here
+    cases = [[r'^12.*AM$', '0'], [r'^12.*PM$', '12'], [r'^.*AM$', 'int(s[:2])+0'], [r'^.*PM$', 'int(s[:2])+12']]
+
+    for i in cases:
+      rp = i[0]
+      if re.match(rp, s.upper().strip()):
+        s = ('0'+str(eval(f'{i[1]}')))[-2:] + s[2:8]
+        break
+    return s
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    fptr.write(result + '\n')
 
     fptr.close()
