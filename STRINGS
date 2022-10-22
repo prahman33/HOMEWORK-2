@@ -1,0 +1,220 @@
+1.#CamelCase
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'camelcase' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+
+def camelcase(s):
+    return len(re.findall(r"[A-Z]{0,1}[a-z]+", s))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = camelcase(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+
+2.#Anagram
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'anagram' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+def anagram(s):
+    if len(s) % 2: return -1
+    
+    from collections import Counter
+    d1 = Counter(s[:len(s)//2])
+    d2 = Counter(s[len(s)//2:])
+    return sum( (d1-d2).values())
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input().strip())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = anagram(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+
+
+
+3.#Strong Password
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'minimumNumber' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. STRING password
+#
+
+def minimumNumber(n, password):
+    uc  = 0 if re.search(r'[A-Z]', password) else 1
+    lc  = 0 if re.search(r'[a-z]', password) else 1
+    num = 0 if re.search(r'[0-9]', password) else 1
+    spc = 0 if re.search(r'[!@#$%^&*()\-+]', password) else 1
+
+    count = uc + lc + num + spc
+    return max(6 - n, count)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    password = input()
+
+    answer = minimumNumber(n, password)
+
+    fptr.write(str(answer) + '\n')
+
+    fptr.close()
+
+
+
+
+
+
+
+
+4.#Two Characters
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'alternate' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+def alternate(s):
+    a=list(set(s))
+    ans=0
+    for x in range(len(a)-1):
+        for y in range(1,len(a)-x):
+            me=[a[x],a[x+y]]
+            nit=""
+            for t in s:
+                if (t in me):
+                    if (nit=="" or t!=nit[-1]):
+                        nit+=t
+                    else:
+                        nit=""
+                        break
+            if len(nit)>ans:
+                ans=len(nit)
+    return ans
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    l = int(input().strip())
+
+    s = input()
+
+    result = alternate(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+
+
+
+
+5.#Caesar Cipher
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'caesarCipher' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. STRING s
+#  2. INTEGER k
+#
+
+def caesarCipher(s, k):
+    def next_char(c):
+        if c.islower() or c.isupper():
+            return chr((ord('a') if c.islower() else ord('A')) + (((ord(c) + k) - (ord('a') if c.islower() else ord('A'))) % 26))
+        return c
+
+    return ''.join(list(map(next_char, s)))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    s = input()
+
+    k = int(input().strip())
+
+    result = caesarCipher(s, k)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
